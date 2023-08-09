@@ -30,7 +30,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Investment
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{$users->pluck('total_amount')->sum()}}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{(int)$users->pluck('total_amount')->sum() - (int)$interest_distribution}}</div>
                             </div>
                             <div class="col-auto"> <i class="fas fa-calendar fa-2x text-gray-300"></i> </div>
                         </div>
@@ -78,7 +78,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"> Intrest Distribution
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">$1600</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{$interest_distribution}}</div>
                             </div>
                             <div class="col-auto"> <i class="fas fa-comments fa-2x text-gray-300"></i> </div>
                         </div>
@@ -140,7 +140,7 @@
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Investment
                                 </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    ${{ (int) Auth::user()->transactions->pluck('deposit')->sum() -(int) Auth::user()->transactions->pluck('withdraw')->sum() }}
+                                    ${{ (int) Auth::user()->total_amount }}
                                 </div>
                             </div>
                             <div class="col-auto"> <i class="fas fa-dollar-sign fa-2x text-gray-300"></i> </div>
@@ -176,7 +176,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                            ${{ ($setting['referral_interest'] / 100) * ((int) $transactions->pluck('deposit')->sum() - (int) $transactions->pluck('withdraw')->sum()) }}
+                                            ${{ ($setting['referral_interest'] / 100) * ((int) $team_investment) }}
                                         </div>
                                     </div>
                                 </div>
@@ -195,7 +195,7 @@
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"> Team Investment
                                 </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    ${{ (int) $transactions->pluck('deposit')->sum() - (int) $transactions->pluck('withdraw')->sum() }}
+                                    ${{ (int) $team_investment }}
                                 </div>
                             </div>
                             <div class="col-auto"> <i class="fas fa-dollar-sign fa-2x text-gray-300"></i> </div>

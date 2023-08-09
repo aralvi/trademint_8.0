@@ -22,7 +22,8 @@ class CreateMonthlyCommissionsTable extends Migration
             $table->integer('interest_percent')->default(0);
             $table->integer('referral_investment')->nullable()->default(0);
             $table->integer('referral_interest_percent')->nullable()->default(0);
-            $table->integer('total_amount');
+            $table->integer('total_interest')->default(0);
+            $table->integer('total_amount')->default(0);
             $table->timestamps();
         });
     }
