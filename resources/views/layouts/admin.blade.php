@@ -233,7 +233,7 @@
 
     <!-- Page level custom scripts -->
     <script src="{{asset('admin/js/demo/datatables-demo.js')}}"></script>
-    <script src="{{asset('admin/js/custom.js')}}"></script>
+    {{-- <script src="{{asset('admin/js/custom.js')}}"></script> --}}
     <script> document.addEventListener('DOMContentLoaded', function () {
         let table = new DataTable('#example');
       });</script>

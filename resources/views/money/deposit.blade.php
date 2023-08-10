@@ -35,7 +35,7 @@
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputLastName2">Amount:</label>
                                     <input class="form-control" id="inputLastName" type="number" name="amount"
-                                        placeholder="Enter your last name" value="5000.00">
+                                        placeholder="Enter deposit amount" value="">
 
                                         <input type="hidden" name="request_type" value="deposit">
                                 </div>
