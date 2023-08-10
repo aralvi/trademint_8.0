@@ -54,7 +54,7 @@
 
                         <div class="input-group mb-3">
                             <div class="custom-file">
-                                <form action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('profile.update',$user->id) }}" method="post" enctype="multipart/form-data">
  @csrf
         @method('patch')
                                 <div class="form-group">
@@ -73,11 +73,10 @@
                 <!-- Account details card-->
                 <div class="card mb-4">
                     <div class="card-body">
-                        <form method="post" action="{{ route('profile.update') }}" >
+                        <form method="post" action="{{ route('profile.update',$user->id) }}" >
         @csrf
         @method('patch')
                             <!-- Form Group (username)-->
-<input type="hidden" name="id" value="{{$user->id}}">
                             <!-- Form Row-->
                             <h3><strong> Personal Details</strong></h3>
                             <div class="row gx-3 mb-3">

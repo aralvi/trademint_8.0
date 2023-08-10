@@ -71,7 +71,7 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'binance_email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'referral_email' => ['nullable', 'string', 'email', 'exists:users,email'],
+            'referral_email' => ['required', 'string', 'email', 'exists:users,email'],
             'binance_id' => ['sometimes', 'string'],
             'mobile' => ['required', 'string'],
             'gender' => ['required', 'string'],

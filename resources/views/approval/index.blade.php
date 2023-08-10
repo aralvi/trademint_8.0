@@ -10,7 +10,7 @@
               <li class="nav-item"> <a class="nav-link active" href="#home20" id="hometab20" role="tab"
                   data-toggle="tab" aria-controls="home" aria-expanded="true">User ({{count($users)}})</a> </li>
               <li class="nav-item"> <a class="nav-link" href="#paneTwo30" role="tab" id="hatstab30" data-toggle="tab"
-                  aria-controls="hats">Deposit ({{count($deposit_requests)}})</a> </li>
+                  aria-controls="hats">Deposit ({{count($deposit_requests) - count($users) }})</a> </li>
               <li class="nav-item"> <a class="nav-link" href="#paneTwo40" role="tab" id="hatstab40" data-toggle="tab"
                   aria-controls="hats">Witdraw ({{count($withdraw_requests)}})</a> </li>
             </ul>
@@ -77,16 +77,19 @@
                         </thead>
                         <tbody>
                             @foreach ($deposit_requests as $deposit_request)
+                            @if ($deposit_request->user->status == 'approved')
+
                             <tr>
                                 <td class="text-capitalize">{{$deposit_request->user->first_name .' '.$deposit_request->user->last_name}}</td>
-                            <td>{{$deposit_request->user->email}}</td>
-                            <td>{{$deposit_request->user->plan}}</td>
-                            <td>${{$deposit_request->deposit}}</td>
-                            <td>{{$deposit_request->created_at->format('Y-m-d')}}</td>
-                            <td><a href="{{ route('update.transaction.status',['id'=>$deposit_request->id,'status'=>'approved']) }}" class="badge badge-success">Approve</a>
-                                <a href="{{ route('update.transaction.status',['id'=>$deposit_request->id,'status'=>'approved']) }}" class="badge badge-danger">Delete</a>
-                            </td>
-                        </tr>
+                                <td>{{$deposit_request->user->email}}</td>
+                                <td>{{$deposit_request->user->plan}}</td>
+                                <td>${{$deposit_request->deposit}}</td>
+                                <td>{{$deposit_request->created_at->format('Y-m-d')}}</td>
+                                <td><a href="{{ route('update.transaction.status',['id'=>$deposit_request->id,'status'=>'approved']) }}" class="badge badge-success">Approve</a>
+                                    <a href="{{ route('update.transaction.status',['id'=>$deposit_request->id,'status'=>'approved']) }}" class="badge badge-danger">Delete</a>
+                                </td>
+                            </tr>
+                            @endif
                         @endforeach
                         </tbody>
                       </table>

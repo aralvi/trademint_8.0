@@ -173,7 +173,7 @@
                                     </div>
                                     <div class="form-group">
                                         <input type="email"  value="{{old('referral_email')}}" name="referral_email" class="form-control form-control-user"
-                                            id="exampleInputEmail5" placeholder="Sponcer Email">
+                                            id="exampleInputEmail5" placeholder="Sponcer Email" required>
                                     </div>
                                     <label class="small mb-1" for="inputFirstName">Upload ID and Payment Proof:</label>
                                     <div class="form-group">

@@ -14,7 +14,7 @@
                                     alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
                                 <h5 class="text-capitalize">{{ $user->first_name . ' ' . $user->last_name }}</h5>
 
-                                <a class="btn btn-primary" href="{{ route('profile.edit',['id'=>$user->id]) }}" role="button">Edit
+                                <a class="btn btn-primary" href="{{ route('profile.edit',$user->id) }}" role="button">Edit
                                     Profile</a><br> <br>
                                 @if (Auth::user()->role == 'admin' && $user->status =='pending')
                                     <a class="btn btn-success" href="{{ route('update.user.status',['id'=>$user->id,'status'=>'approved']) }}" role="button">Approve</a><br> <br>
@@ -45,7 +45,7 @@
                                         </div>
                                         <div class="col-6 mb-3">
                                             <h6><strong>Sponcer Email</strong></h6>
-                                            <p class="text-muted">{{ $user->referal_email }}</p>
+                                            <p class="text-muted">{{ $user->referral_email }}</p>
                                         </div>
                                     </div>
 

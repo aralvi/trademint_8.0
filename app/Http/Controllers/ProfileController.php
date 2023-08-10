@@ -37,9 +37,9 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(Request $request): RedirectResponse
+    public function update(Request $request,$id): RedirectResponse
     {
-        $user = User::findOrFail($request->id);
+        $user = User::findOrFail($id);
         if ($request->hasFile('avatar')) {
 
             $avatar_destination_name = time() . '.' . $request->avatar->getClientOriginalExtension();
@@ -47,17 +47,20 @@ class ProfileController extends Controller
             $request->avatar->move(public_path($avatar_destination_folder), $avatar_destination_name);
             $user->avatar = $avatar_destination_folder . $avatar_destination_name;
         }
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
+        if($request->has('first_name')){
+
+            $user->first_name = $request->first_name;
+            $user->last_name = $request->last_name;
         $user->email = $request->email;
         $user->mobile = $request->mobile;
         $user->plan = $request->plan;
         $user->binance_email = $request->binance_email;
         $user->binance_id = $request->binance_id;
+    }
 
         $user->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.edit',$user->id)->with('status', 'profile-updated');
     }
 
     /**

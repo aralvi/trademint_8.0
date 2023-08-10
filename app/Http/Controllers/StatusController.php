@@ -59,13 +59,10 @@ class StatusController extends Controller
     {
         $user =  User::whereId($id)->first();
         $user->status = $status;
+        $user->save();
         $transaction = Transaction::whereUserId($id)->first();
         $transaction->status = $status;
         $transaction->save();
-        if ($status == 'approved') {
-            $user->total_amount = (int)$user->total_amount + ((int)$transaction->deposit - (int)$transaction->withdraw);
-        }
-        $user->save();
         return redirect('admin/requests');
     }
     /**
