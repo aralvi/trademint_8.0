@@ -217,7 +217,7 @@
     <script src="{{ asset('user/js/sb-admin-2.min.js') }}"></script>
 <script>
 $(document).ready(function() {
-  const maxFiles = 3;
+  const maxFiles = 4;
   $('#imageInput').on('change', function() {
     // Check the number of selected files
     const selectedFiles = $(this)[0].files.length;

@@ -21,7 +21,7 @@
                   <tbody>
                     @foreach ($referals as $referal)
                     <tr>
-                        <td><a href="user-associate-profile.html">{{$referal->first_name. ' '. $referal->last_name}}</a></td>
+                        <td><a href="{{route('user',$referal->id)}}">{{$referal->first_name. ' '. $referal->last_name}}</a></td>
                         <td>{{$referal->email}}</td>
                         <td>${{(int)$referal->transactions->pluck('deposit')->sum()-(int)$referal->transactions->pluck('withdraw')->sum()}}</td>
                     </tr>

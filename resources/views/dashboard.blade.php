@@ -176,7 +176,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                            ${{ ($setting['referral_interest'] / 100) * ((int) $team_investment) }}
+                                            ${{(int)$team_investment >=1200? ($setting['referral_interest'] / 100) * ((int) $team_investment):0 }}
                                         </div>
                                     </div>
                                 </div>

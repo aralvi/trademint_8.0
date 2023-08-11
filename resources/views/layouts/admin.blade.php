@@ -68,7 +68,14 @@
                             <a class="collapse-item" href="{{route('withdraw.index')}}">Withdraw Request</a>
                             <a class="collapse-item" href="{{route('associates')}}">Associate</a>
                         @endif
-                        <a class="collapse-item" href="{{route('logout')}}">Logout</a>
+                        <a class="collapse-item" href="{{route('logout')}}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+
+                                        {{ __('Logout') }}
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form></a>
                     </div>
                 </div>
             </li>
@@ -135,16 +142,11 @@
 
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" data-toggle="modal"
-                                    data-target="#logoutModal" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    data-target="#logoutModal" href="javascript:void(0)">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 
                                         {{ __('Logout') }}
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
                                 </a>
                             </div>
                         </li>

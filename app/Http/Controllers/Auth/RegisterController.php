@@ -76,7 +76,8 @@ class RegisterController extends Controller
             'mobile' => ['required', 'string'],
             'gender' => ['required', 'string'],
             'initial_invest' => ['required'],
-            'media.*' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
+            'media' => ['required','array','size:4'],
+            'media.*' => ['required', 'image', 'mimes:jpeg,png,jpg,JPEG,JPG,PNG,gif,svg'],
             'avatar' => ['string'],
             'plan' => ['required', 'string'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -91,12 +92,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // return User::create([
-        //     'name' => $data['name'],
-        //     'email' => $data['email'],
-        //     'password' => Hash::make($data['password']),
-        // ]);
-
         if (isset($data['referral_email'])) {
             $referral_user = User::select('id')->whereEmail($data['referral_email'])->first();
         }
@@ -132,7 +127,7 @@ class RegisterController extends Controller
         $transaction->deposit = $data['initial_invest'];
         $transaction->request_type = 'deposit';
         $transaction->save();
-return back()->with('success', 'successfully registered please wait for admin approval, Thank you!');
+return redirect('/register')->with('success', 'successfully registered please wait for admin approval, Thank you!');
 
     }
 }

@@ -13,9 +13,11 @@
                                 <img src="{{ isset($user->avatar) ? asset($user->avatar) : 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp' }}"
                                     alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
                                 <h5 class="text-capitalize">{{ $user->first_name . ' ' . $user->last_name }}</h5>
-
+                                @if (Auth::user()->id == $user->id || Auth::user()->role =='admin')
                                 <a class="btn btn-primary" href="{{ route('profile.edit',$user->id) }}" role="button">Edit
                                     Profile</a><br> <br>
+
+                                @endif
                                 @if (Auth::user()->role == 'admin' && $user->status =='pending')
                                     <a class="btn btn-success" href="{{ route('update.user.status',['id'=>$user->id,'status'=>'approved']) }}" role="button">Approve</a><br> <br>
                                     <a class="btn btn-danger" href="{{ route('update.user.status',['id'=>$user->id,'status'=>'deleted']) }}" role="button">Delete</a>
@@ -60,6 +62,13 @@
                                             <h6><strong>Binance ID</strong></h6>
                                             <p class="text-muted">{{ $user->binance_id }}</p>
                                         </div>
+                                    </div>
+                                    <div class="row pt-1">
+                                        @foreach ($user->paymentProofs as $paymentProof)
+                                        <div class="col-4 mb-3">
+                                                <img src="{{asset($paymentProof->media)}}" class="w-100 h-00" alt="" />
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

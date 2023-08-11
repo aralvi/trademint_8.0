@@ -25,7 +25,7 @@ Route::get('/', function () {
     Artisan::call('optimize:clear');
     Artisan::call('cache:clear');
     Artisan::call('config:cache');
-    return redirect('/login');
+    return redirect()->route('login');
 });
 
 Auth::routes();
@@ -54,4 +54,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('status/user/{id}/{status}', [StatusController::class, 'updateUser'])->name('update.user.status');
     Route::get('status/transaction/{id}/{status}', [StatusController::class, 'updateTransactionRequest'])->name('update.transaction.status');
     Route::resource('settings', SettingsController::class);
+});
+Route::fallback(function () {
+    return view('404');
 });
