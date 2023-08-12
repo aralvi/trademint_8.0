@@ -114,7 +114,7 @@ class RegisterController extends Controller
 
         foreach ($data['media'] as $key => $media) {
             $paymentProof = new PaymentProofs();
-            $media_destination_name = time() . '.' . $media->getClientOriginalExtension();
+            $media_destination_name = $media->getClientOriginalName().'_'.time() . '.' . $media->getClientOriginalExtension();
             $media_destination_folder = "/uploads/medias/user/paymentproofs/";
             $media->move(public_path($media_destination_folder), $media_destination_name);
             $paymentProof->media = $media_destination_folder . $media_destination_name;
