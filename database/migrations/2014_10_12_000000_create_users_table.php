@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique();
-            $table->string('binance_email')->unique();
-            $table->string('binance_id')->unique()->nullable();
+            $table->string('binance_email');
+            $table->string('binance_id')->nullable();
             $table->string('referral_email')->nullable();
             $table->string('referral_id')->nullable();
             $table->string('mobile')->nullable();

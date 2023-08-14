@@ -17,10 +17,12 @@
                                 <a class="btn btn-primary" href="{{ route('profile.edit',$user->id) }}" role="button">Edit
                                     Profile</a><br> <br>
 
-                                @endif
-                                @if (Auth::user()->role == 'admin' && $user->status =='pending')
+                                    @endif
+                                    @if (Auth::user()->role == 'admin' && $user->status =='pending')
                                     <a class="btn btn-success" href="{{ route('update.user.status',['id'=>$user->id,'status'=>'approved']) }}" role="button">Approve</a><br> <br>
-                                    <a class="btn btn-danger" href="{{ route('update.user.status',['id'=>$user->id,'status'=>'deleted']) }}" role="button">Delete</a>
+                                    @endif
+                                    @if (Auth::user()->role == 'admin' )
+                                    <a class="btn btn-danger" href="{{ route('update.user.status',['id'=>$user->id,'status'=>'deleted']) }}" role="button">Delete</a><br><br>
                                 @endif
                             </div>
                             <div class="col-md-8">

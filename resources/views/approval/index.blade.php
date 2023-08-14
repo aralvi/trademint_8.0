@@ -87,6 +87,7 @@
                                 <td>{{$deposit_request->created_at->format('Y-m-d')}}</td>
                                 <td><a href="{{ route('update.transaction.status',['id'=>$deposit_request->id,'status'=>'approved']) }}" class="badge badge-success">Approve</a>
                                     <a href="{{ route('update.transaction.status',['id'=>$deposit_request->id,'status'=>'approved']) }}" class="badge badge-danger">Delete</a>
+                                    <a href="{{ asset($deposit_request->proof) }}" target="_blank" class="badge badge-info">view</a>
                                 </td>
                             </tr>
                             @endif

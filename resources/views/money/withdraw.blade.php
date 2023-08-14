@@ -29,8 +29,8 @@
                             <div class="row gx-3 mb-3">
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputFirstName">Amount</label>
-                                    <input class="form-control" id="inputFirstName" type="number" name="amount"
-                                        placeholder="Enter your withdraw amount" value="">
+                                    <input class="form-control" id="inputFirstName" min="{{$settings->min_withdraw}}" max="{{$settings->max_withdraw >  (int)(((int)$settings->$plan/100)* (int)Auth::user()->total_amount) ? (int)(((int)$settings->$plan/100)* (int)Auth::user()->total_amount):$settings->max_withdraw}}" type="number" name="amount"
+                                        placeholder="Enter your withdraw amount" value="" >
                                         <input type="hidden" name="request_type" value="withdraw">
                                 </div>
                             </div>

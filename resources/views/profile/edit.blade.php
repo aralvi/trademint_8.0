@@ -39,6 +39,7 @@
         <!-- Account page navigation-->
 
         <hr class="mt-0 mb-4">
+        @include('components.messages')
         <div class="row">
             <div class="col-xl-4">
                 <!-- Profile picture card-->
@@ -84,14 +85,14 @@
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputFirstName">First name</label>
                                     <input class="form-control" id="inputFirstName" type="text" name="first_name"
-                                        placeholder="Disabled input" value="{{$user->first_name}}" {{Auth::user()->role == 'admin' ?'':'disabled'}}>
+                                        placeholder="readonly input" value="{{$user->first_name}}" {{Auth::user()->role == 'admin' ?'':'readonly'}}>
 
                                 </div>
                                 <!-- Form Group (last name)-->
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputLastName">Last name</label>
                                     <input class="form-control" id="inputLastName" type="text" name="last_name"
-                                        placeholder="Enter your last name" value="{{$user->last_name}}" {{Auth::user()->role == 'admin' ?'':'disabled'}}>
+                                        placeholder="Enter your last name" value="{{$user->last_name}}" {{Auth::user()->role == 'admin' ?'':'readonly'}}>
                                 </div>
                             </div>
                             <!-- Form Row        -->
@@ -99,7 +100,7 @@
                             <div class="mb-3">
                                 <label class="small mb-1" for="inputEmailAddress">Email address</label>
                                 <input class="form-control" id="inputEmailAddress" type="email" name="email"
-                                    placeholder="Enter your email address" value="{{$user->email}}" {{Auth::user()->role == 'admin' ?'':'disabled'}}>
+                                    placeholder="Enter your email address" value="{{$user->email}}" {{Auth::user()->role == 'admin' ?'':'readonly'}}>
                             </div>
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
@@ -114,7 +115,7 @@
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputBirthday">Plan</label>
                                     <input class="form-control" id="inputBirthday" type="text" name="plan"
-                                        placeholder="Enter your birthday" value="{{$user->plan}}" {{Auth::user()->role == 'admin' ?'':'disabled'}}>
+                                        placeholder="Enter your birthday" value="{{$user->plan}}" {{Auth::user()->role == 'admin' ?'':'readonly'}}>
                                 </div>
                             </div>
                             <h3><strong> Transaction Details</strong></h3>
@@ -123,7 +124,7 @@
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputPhone4">Binance Email:</label>
                                     <input class="form-control" id="inputBinanceEmail" type="email" name="binance_email"
-                                        placeholder="Enter your binance email" value="{{$user->binance_email}}" {{Auth::user()->role == 'admin' ?'':'disabled'}}>
+                                        placeholder="Enter your binance email" value="{{$user->binance_email}}" {{Auth::user()->role == 'admin' ?'':'readonly'}}>
                                 </div>
                                 <!-- Form Group (birthday)-->
                                 <div class="col-md-6">

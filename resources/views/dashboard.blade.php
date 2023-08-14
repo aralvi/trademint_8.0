@@ -176,7 +176,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                            ${{(int)$team_investment >=1200? ($setting['referral_interest'] / 100) * ((int) $team_investment):0 }}
+                                            ${{(int)Auth::user()->total_amount >=1200? ($setting['referral_interest'] / 100) * ((int) $team_investment):0 }}
                                         </div>
                                     </div>
                                 </div>
@@ -239,8 +239,8 @@
                             @foreach (Auth::user()->transactions as $transaction)
                                 <tr>
                                     <td>{{ $transaction->created_at->format('d M Y') }}</td>
-                                    <td>${{ $transaction->deposit }}</td>
                                     <td>${{ $transaction->withdraw }}</td>
+                                    <td>${{ $transaction->deposit }}</td>
                                     <td>${{ (int) ($total_amount = (int) $total_amount + (int) $transaction->deposit - (int) ($total_withdraw = (int) $total_withdraw + (int) $transaction->withdraw)) }}
                                     </td>
                                 </tr>

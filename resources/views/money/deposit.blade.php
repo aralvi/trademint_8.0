@@ -34,7 +34,7 @@
                                 <!-- Form Group (last name)-->
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputLastName2">Amount:</label>
-                                    <input class="form-control" id="inputLastName" type="number" name="amount"
+                                    <input class="form-control" id="inputLastName" min="{{$settings->min_deposit}}" max="{{$settings->max_deposit}}" type="number" name="amount"
                                         placeholder="Enter deposit amount" value="">
 
                                         <input type="hidden" name="request_type" value="deposit">

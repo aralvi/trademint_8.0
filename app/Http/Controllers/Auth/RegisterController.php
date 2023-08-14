@@ -46,7 +46,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -70,7 +70,7 @@ class RegisterController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'binance_email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'binance_email' => ['required', 'string', 'email', 'max:255'],
             'referral_email' => ['required', 'string', 'email', 'exists:users,email'],
             'binance_id' => ['sometimes', 'string'],
             'mobile' => ['required', 'string'],

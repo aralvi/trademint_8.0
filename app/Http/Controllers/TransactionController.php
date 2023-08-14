@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Settings;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -19,14 +21,17 @@ class TransactionController extends Controller
      */
     public function deposit()
     {
-        return view('money.deposit');
+        $settings = Settings::first();
+        return view('money.deposit',compact('settings'));
     }
     /**
      * Display a listing of the resource.
      */
     public function withdraw()
     {
-        return view('money.withdraw');
+        $settings = Settings::first();
+        $plan = Auth::user()->plan.'_plan_interest';
+        return view('money.withdraw',compact('settings','plan'));
     }
 
     /**
