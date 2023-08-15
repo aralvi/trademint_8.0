@@ -36,14 +36,14 @@ class SettingsController extends Controller
         }
         $settings->min_deposit = $request->min_deposit;
         $settings->max_deposit = $request->max_deposit;
-        $settings->min_withdraw = $request->min_withdraw;
-        $settings->max_withdraw = $request->max_withdraw;
+        // $settings->min_withdraw = $request->min_withdraw;
+        // $settings->max_withdraw = $request->max_withdraw;
         $settings->enable_investment = $request->enable_investment;
         $settings->enable_registration = $request->enable_registration;
         $settings->compound = $request->compound;
         $settings->international_plan_interest = $request->international_plan_interest;
         $settings->standard_plan_interest = $request->standard_plan_interest;
-        $settings->goal_plan_interest = $request->goal_plan_interest;
+        // $settings->goal_plan_interest = $request->goal_plan_interest;
         $settings->referral_interest = $request->referral_interest;
         $settings->save();
         return back()->with('success', 'Settings has been updated');

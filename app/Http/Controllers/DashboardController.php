@@ -24,7 +24,7 @@ class DashboardController extends Controller
         } else {
             $transactions = Transaction::whereReferringId(Auth::user()->id)->whereStatus('approved')->get();
             $setting = Settings::select([Auth::user()->plan . '_plan_interest', 'referral_interest'])->first()->toArray();
-            $team_investment = User::whereReferralId(Auth::user()->id)->pluck('total_amount')->sum();
+            $team_investment = User::whereReferralId(Auth::user()->id)->wherePlan('standard')->pluck('total_amount')->sum();
             return view('dashboard', compact('transactions', 'setting', 'team_investment'));
         }
     }

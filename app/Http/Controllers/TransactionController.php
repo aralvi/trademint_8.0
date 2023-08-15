@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Settings;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +23,12 @@ class TransactionController extends Controller
     public function deposit()
     {
         $settings = Settings::first();
-        return view('money.deposit',compact('settings'));
+        if($settings->enable_investment == 1){
+            return view('money.deposit',compact('settings'));
+
+        }else{
+            return 'This service ic temprarily not available!';
+        }
     }
     /**
      * Display a listing of the resource.
@@ -31,7 +37,10 @@ class TransactionController extends Controller
     {
         $settings = Settings::first();
         $plan = Auth::user()->plan.'_plan_interest';
-        return view('money.withdraw',compact('settings','plan'));
+        $max_withdraw = (int)(((int)$settings->$plan / 100) * (int)Auth::user()->total_amount);
+        $team_investment = User::whereReferralId(Auth::user()->id)->wherePlan('standard')->pluck('total_amount')->sum();
+        $max_withdraw = $max_withdraw + ($settings->referral_interest / 100) * ((int) $team_investment);
+        return view('money.withdraw',compact('settings','plan', 'max_withdraw'));
     }
 
     /**

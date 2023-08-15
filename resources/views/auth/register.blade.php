@@ -164,7 +164,6 @@
                                         <select class="form-control" required value="{{old('plan')}}" name="plan" id="exampleFormControlSelect1">
                                             <option value="international">International</option>
                                             <option value="standard">Standard</option>
-                                            <option value="goal">Goal</option>
                                         </select>
                                     </div>
                                     <div class="form-group">

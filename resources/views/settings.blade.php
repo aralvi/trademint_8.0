@@ -65,11 +65,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <h3><strong> Witdraw</strong></h3>
+                            {{-- <h3><strong> Witdraw</strong></h3> --}}
                             <!-- Form Row        -->
                             <!-- Form Group (email address)-->
                             <!-- Form Row-->
-                            <div class="row gx-3 mb-3">
+                            {{-- <div class="row gx-3 mb-3">
                                 <!-- Form Group (phone number)-->
                                 <hr class="mt-0 mb-4">
                                 <div class="col-md-6">
@@ -85,7 +85,7 @@
                                         placeholder="Enter amount"
                                         value="{{ isset($setting->max_withdraw) ? $setting->max_withdraw : '' }}">
                                 </div>
-                            </div>
+                            </div> --}}
                             <h3><strong> Commision&nbsp;</strong></h3>
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (phone number)-->
@@ -101,12 +101,12 @@
                                         type="number" placeholder="Enter interest percentage"
                                         value="{{ isset($setting->standard_plan_interest) ? $setting->standard_plan_interest : '' }}">
                                 </div>
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <label class="small mb-1" for="inputPhone3">Goal Plan (%)</label>
                                     <input class="form-control" id="inputPhone3" name="goal_plan_interest"
                                         type="number" placeholder="Enter interest percentage"
                                         value="{{ isset($setting->goal_plan_interest) ? $setting->goal_plan_interest : '' }}">
-                                </div>
+                                </div> --}}
                                 <!-- Form Group (birthday)-->
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputBirthday3">Referal Interest (%)</label>
