@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::get('associates', [ReferralsController::class, 'index'])->name('associates');
 });
 
-Route::prefix('admin')->middleware('auth')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'adminCheck'])->group(function () {
     Route::get('requests', [StatusController::class, 'index'])->name('approval');
     Route::get('user/{id}', [StatusController::class, 'showUser'])->name('user');
     Route::get('status/user/{id}/{status}', [StatusController::class, 'updateUser'])->name('update.user.status');

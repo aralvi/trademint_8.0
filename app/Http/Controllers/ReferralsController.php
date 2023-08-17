@@ -14,8 +14,8 @@ class ReferralsController extends Controller
      */
     public function index()
     {
-        $referals = User::whereReferralEmail(Auth::user()->email)->whereStatus('approved')->wherePlan('standard')->get();
-        $total_investment = (int)Transaction::whereIn('user_id', $referals->pluck('id'))->whereStatus('approved')->sum('deposit') - (int)Transaction::whereIn('user_id', $referals->pluck('id'))->whereStatus('approved')->sum('withdraw');
+        $referals = User::whereReferralEmail(Auth::user()->email)->whereStatus('approved')->get();
+        $total_investment = (int)Transaction::whereIn('user_id', $referals->where('plan','standard')->pluck('id'))->whereStatus('approved')->sum('deposit') - (int)Transaction::whereIn('user_id', $referals->pluck('id'))->whereStatus('approved')->sum('withdraw');
         return view('referals.index', compact('referals', 'total_investment'));
     }
 

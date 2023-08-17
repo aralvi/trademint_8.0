@@ -1,20 +1,4 @@
-{{-- <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout> --}}
 
 @extends('layouts.admin')
 @section('content')
@@ -129,7 +113,7 @@
         </div>
     @else
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Income</h1>
+        <h1 class="h3 mb-2 text-gray-800 text-capitalize">Income ({{Auth::user()->plan}} Plan) </h1>
         <div class="row">
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
@@ -173,7 +157,7 @@
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1"> Monthly Earning
                                     {{ $setting[Auth::user()->plan . '_plan_interest'] }}% + {{$setting['referral_interest']}}%</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    ${{ (($setting[Auth::user()->plan . '_plan_interest'] / 100) *((int) Auth::user()->transactions->pluck('deposit')->sum() -(int) Auth::user()->transactions->pluck('withdraw')->sum())) +(int)((int)Auth::user()->total_amount >=1200? ($setting['referral_interest'] / 100) * ((int) $team_investment):0)}}
+                                    ${{ (($setting[Auth::user()->plan . '_plan_interest'] / 100) *((int) Auth::user()->transactions->pluck('deposit')->sum() -(int) Auth::user()->transactions->pluck('withdraw')->sum())) +(int)(Auth::user()->plan == 'standard' && (int)Auth::user()->total_amount >=1200? ($setting['referral_interest'] / 100) * ((int) $team_investment):0)}}
                                 </div>
                             </div>
                             <div class="col-auto"> <i class="fas fa-dollar-sign fa-2x text-gray-300"></i> </div>
@@ -192,7 +176,8 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                            ${{(int)Auth::user()->total_amount >=1200? ($setting['referral_interest'] / 100) * ((int) $team_investment):0 }}
+
+                                            ${{Auth::user()->plan == 'standard' && (int)Auth::user()->total_amount >=1200? ($setting['referral_interest'] / 100) * ((int) $team_investment):0 }}
                                         </div>
                                     </div>
                                 </div>
@@ -225,7 +210,7 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Downline Count : {{ count(Auth::user()->transactions) }}</h6>
+                {{-- <h6 class="m-0 font-weight-bold text-primary">Downline Count : {{ count(Auth::user()->transactions) }}</h6> --}}
                 <br>
                 <a href="{{ route('deposit.index') }}" class="btn btn-primary btn-lg active" role="button"
                     aria-pressed="true">Add

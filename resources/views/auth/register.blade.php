@@ -1,80 +1,4 @@
-{{-- @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection --}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -156,15 +80,15 @@
                                     </div>
                                     <br>
                                     <div class="form-group">
-                                        <input type="number" class="form-control form-control-user"
-                                            id="exampleInputEmail2" min="{{$settings->min_deposit}}" placeholder="Min ${{$settings->min_deposit}}" required value="{{old('initial_invest')}}" name="initial_invest">
+                                        <label for="plan">Select Your Plan:</label>
+                                        <select class="form-control" required value="{{old('plan')}}" name="plan" id="plan">
+                                            <option data-min="1200" value="international">International</option>
+                                            <option data-min="{{$settings->min_deposit}}" value="standard">Standard</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleFormControlSelect1">Select Your Plan:</label>
-                                        <select class="form-control" required value="{{old('plan')}}" name="plan" id="exampleFormControlSelect1">
-                                            <option value="international">International</option>
-                                            <option value="standard">Standard</option>
-                                        </select>
+                                        <input type="number" class="form-control form-control-user"
+                                            id="amount" min="1200" placeholder="please enter you amount" required value="{{old('initial_invest')}}" name="initial_invest">
                                     </div>
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user"
@@ -226,6 +150,21 @@ $(document).ready(function() {
       $(this).val('');
     }
   });
+
+
+
+    // Get references to the select element and input element
+        const selectOption = document.getElementById('plan');
+        const inputValue = document.getElementById('amount');
+
+        // Add an event listener to the select element
+        selectOption.addEventListener('change', function() {
+            const selectedOptionAttribute = selectOption.options[selectOption.selectedIndex];
+            const selectedMinValue = selectedOptionAttribute.getAttribute('data-min');
+            console.log(selectedMinValue);
+            // Set the input value to the selected option's value
+            inputValue.min = selectedMinValue;
+        });
 });
 </script>
 
