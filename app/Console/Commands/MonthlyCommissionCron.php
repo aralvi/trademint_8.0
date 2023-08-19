@@ -45,7 +45,8 @@ class MonthlyCommissionCron extends Command
         $users = User::where('role', 'user')->get();
         foreach ($users as $key => $user) {
             $plan_interest = $user->plan . '_plan_interest';
-            $referral_investment = (int)Transaction::where('referring_id', $user->id)->pluck('deposit')->sum() - (int)Transaction::where('referring_id', $user->id)->pluck('withdraw')->sum();
+            $referal_users = User::where('referral_id', $user->id)->wherePlan('standard')->pluck('id')->toArray();
+            $referral_investment = $user->plan == 'standard' && $user->total_amount >=1200 ? (int)Transaction::whereIn('user_id', $referal_users)->pluck('deposit')->sum() - (int)Transaction::whereIn('user_id', $referal_users)->pluck('withdraw')->sum() : 0;
             $monthly_commission = new MonthlyCommission();
             $monthly_commission->user_id = $user->id;
             $monthly_commission->investment = $user->total_amount;
@@ -58,6 +59,7 @@ class MonthlyCommissionCron extends Command
             $monthly_commission->save();
             $user->total_amount = (int) $user->total_amount + (int) $monthly_commission->total_interest;
             $user->save();
+
         }
 
 
