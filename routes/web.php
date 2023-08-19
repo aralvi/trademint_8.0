@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::post('transaction', [TransactionController::class, 'store'])->name('transaction.store');
 
     Route::get('associates', [ReferralsController::class, 'index'])->name('associates');
+    Route::get('user/{id}', [StatusController::class, 'showUser'])->name('team');
 });
 
 Route::prefix('admin')->middleware(['auth', 'adminCheck'])->group(function () {

@@ -234,16 +234,20 @@
 
                         <tbody>
                             @php
-                                $total_amount = 0;
+                                $total_deposit = 0;
                                 $total_withdraw = 0;
                             @endphp
                             @foreach (Auth::user()->transactions as $transaction)
+                            @php
+                                 ($total_deposit +=  $transaction->deposit);
+                                 ($total_withdraw +=   $transaction->withdraw);
+                                $total_amount = $total_deposit-$total_withdraw;
+                            @endphp
                                 <tr>
                                     <td>{{ $transaction->created_at->format('d M Y') }}</td>
                                     <td>${{ $transaction->withdraw }}</td>
                                     <td>${{ $transaction->deposit }}</td>
-                                    <td>${{ (int) ($total_amount = (int) $total_amount + (int) $transaction->deposit - (int) ($total_withdraw = (int) $total_withdraw + (int) $transaction->withdraw)) }}
-                                    </td>
+                                    <td>${{ $total_amount }}</td>
                                 </tr>
                             @endforeach
 

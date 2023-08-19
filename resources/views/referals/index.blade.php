@@ -15,14 +15,16 @@
                     <tr>
                       <th>Name</th>
                       <th>Email </th>
+                      <th>Plan </th>
                       <th>Invested</th>
                     </tr>
                   </thead>
                   <tbody>
                     @foreach ($referals as $referal)
                     <tr>
-                        <td><a href="{{route('user',$referal->id)}}">{{$referal->first_name. ' '. $referal->last_name}}</a></td>
+                        <td><a href="{{route('team',$referal->id)}}">{{$referal->first_name. ' '. $referal->last_name}}</a></td>
                         <td>{{$referal->email}}</td>
+                        <td>{{$referal->plan}}</td>
                         <td>${{(int)$referal->transactions->pluck('deposit')->sum()-(int)$referal->transactions->pluck('withdraw')->sum()}}</td>
                     </tr>
                     @endforeach
