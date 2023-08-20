@@ -59,7 +59,13 @@ class MonthlyCommissionCron extends Command
             $monthly_commission->save();
             $user->total_amount = (int) $user->total_amount + (int) $monthly_commission->total_interest;
             $user->save();
-
+            $transaction = new Transaction();
+            $transaction->request_type = 'deposit';
+            $transaction->status = 'approved';
+            $transaction->deposit = $monthly_commission->total_interest;
+            $transaction->user_id = $user->id;
+            $transaction->referring_id = $user->referral_id;
+            $transaction->save();
         }
 
 
