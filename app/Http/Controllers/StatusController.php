@@ -58,11 +58,15 @@ class StatusController extends Controller
     public function updateUser(string $id, string $status)
     {
         $user =  User::whereId($id)->first();
-        $user->status = $status;
-        $user->save();
-        $transaction = Transaction::whereUserId($id)->first();
-        $transaction->status = $status;
-        $transaction->save();
+        if($status == 'deleted'){
+            $user->delete();
+        }else{
+            $user->status = $status;
+            $user->save();
+            $transaction = Transaction::whereUserId($id)->first();
+            $transaction->status = $status;
+            $transaction->save();
+        }
         return redirect('admin/requests');
     }
     /**
