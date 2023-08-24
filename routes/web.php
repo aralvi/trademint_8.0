@@ -56,6 +56,9 @@ Route::prefix('admin')->middleware(['auth', 'adminCheck'])->group(function () {
     Route::get('status/transaction/{id}/{status}', [StatusController::class, 'updateTransactionRequest'])->name('update.transaction.status');
     Route::resource('settings', SettingsController::class);
 });
+Route::get('/change-password', [ProfileController::class,'password'])->name('password');
+
+Route::post('/password', [ProfileController::class,'update_password'])->name('update_password');
 Route::fallback(function () {
     return view('404');
 });

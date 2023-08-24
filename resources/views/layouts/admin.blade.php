@@ -68,6 +68,7 @@
                             <a class="collapse-item" href="{{route('withdraw.index')}}">Withdraw Request</a>
                             <a class="collapse-item" href="{{route('associates')}}">Associate</a>
                         @endif
+                            <a class="collapse-item" href="{{route('password')}}">Change Password</a>
                         <a class="collapse-item" href="{{route('logout')}}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
 

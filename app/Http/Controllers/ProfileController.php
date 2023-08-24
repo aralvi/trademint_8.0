@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
@@ -63,6 +64,30 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit',$user->id)->with('suceess', 'profile has been updated');
     }
 
+    public function Password()
+    {
+        return view('profile.change_password');
+    }
+
+    public function update_password(Request $request)
+    {
+
+        $password = User::find(Auth::id());
+
+        $this->validate($request, [
+            'old_password' => ['required', 'string', 'min:8'],
+            'new_password' => ['required', 'string', 'min:8', 'confirmed', 'different:old_password'],
+        ]);
+        if (Hash::check($request->old_password, $password->password)) {
+
+            $password->password = Hash::make($request->new_password);
+            $password->save();
+
+            return redirect()->back()->with('success', 'Password updated successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Old Password does not match!');
+        }
+    }
     /**
      * Delete the user's account.
      */
