@@ -66,6 +66,7 @@
                             <a class="collapse-item" href="{{route('profile.edit',Auth::user()->id)}}">Edit Profile</a>
                             <a class="collapse-item" href="{{route('deposit.index')}}">Add Money</a>
                             <a class="collapse-item" href="{{route('withdraw.index')}}">Withdraw Request</a>
+                            <a class="collapse-item" href="{{route('principleWithdraw')}}">Principle Withdraw Request</a>
                             <a class="collapse-item" href="{{route('associates')}}">Associate</a>
                         @endif
                             <a class="collapse-item" href="{{route('password')}}">Change Password</a>

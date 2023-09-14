@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('deposit', [TransactionController::class, 'deposit'])->name('deposit.index');
     Route::get('withdraw', [TransactionController::class, 'withdraw'])->name('withdraw.index');
+    Route::get('principle_withdraw', [TransactionController::class, 'principleWithdraw'])->name('principleWithdraw');
     Route::post('transaction', [TransactionController::class, 'store'])->name('transaction.store');
 
     Route::get('associates', [ReferralsController::class, 'index'])->name('associates');

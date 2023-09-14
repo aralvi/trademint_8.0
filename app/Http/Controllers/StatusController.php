@@ -80,7 +80,13 @@ class StatusController extends Controller
         if ($status == 'approved') {
             $user = User::whereId($transaction->user_id)->first();
             if ($transaction->request_type == 'withdraw') {
-                $user->available_withdraw = (int) $user->available_withdraw - (int)$transaction->withdraw;
+                if ($transaction->withdraw == ($user->total_amount + $user->available_withdraw)) {
+                    $user->total_amount = (int)$user->total_amount + (int)$user->available_withdraw - ((int)$transaction->withdraw);
+                    $user->available_withdraw = (int)$user->total_amount ;
+                }else{
+
+                    $user->available_withdraw = (int) $user->available_withdraw - (int)$transaction->withdraw;
+                }
             }else{
                 // $user->total_amount = (int)$user->total_amount + ((int)$transaction->deposit - (int)$transaction->withdraw);
                 $user->total_amount = (int)$user->total_amount + ((int)$transaction->deposit);

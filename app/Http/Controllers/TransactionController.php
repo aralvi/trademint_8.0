@@ -42,6 +42,10 @@ class TransactionController extends Controller
         $max_withdraw = $max_withdraw + ($settings->referral_interest / 100) * ((int) $team_investment);
         return view('money.withdraw',compact('settings','plan', 'max_withdraw'));
     }
+    public function principleWithdraw()
+    {
+        return view('money.principle_withdraw');
+    }
 
     /**
      * Show the form for creating a new resource.
