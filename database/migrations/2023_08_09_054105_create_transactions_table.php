@@ -22,7 +22,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('deposit')->nullable()->default(0);
             $table->integer('withdraw')->nullable()->default(0);
             $table->enum('status', ['approved', 'deleted', 'pending'])->default('pending');
-            $table->enum('request_type', ['withdraw', 'deposit']);
+            $table->enum('request_type', ['withdraw', 'deposit','interest']);
             $table->string('proof')->nullable();
             $table->timestamps();
         });

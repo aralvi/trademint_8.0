@@ -62,3 +62,4 @@ Route::post('/password', [ProfileController::class,'update_password'])->name('up
 Route::fallback(function () {
     return view('404');
 });
+Route::view('testing', 'template');

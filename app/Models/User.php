@@ -33,6 +33,7 @@ class User extends Authenticatable
         'role',
         'plan',
         'password',
+        'available_withdraw',
     ];
 
     /**
