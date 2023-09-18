@@ -68,6 +68,7 @@
                             <a class="collapse-item" href="{{route('withdraw.index')}}">Withdraw Request</a>
                             <a class="collapse-item" href="{{route('principleWithdraw')}}">Principle Withdraw Request</a>
                             <a class="collapse-item" href="{{route('associates')}}">Associate</a>
+                            <a class="collapse-item" href="{{route('certificate')}}">Downlaod Certificate</a>
                         @endif
                             <a class="collapse-item" href="{{route('password')}}">Change Password</a>
                         <a class="collapse-item" href="{{route('logout')}}" onclick="event.preventDefault();
@@ -141,6 +142,7 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
+
 
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" data-toggle="modal"

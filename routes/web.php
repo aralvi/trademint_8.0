@@ -48,6 +48,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('associates', [ReferralsController::class, 'index'])->name('associates');
     Route::get('user/{id}', [StatusController::class, 'showUser'])->name('team');
+    Route::get('certificate', [StatusController::class, 'generateCertificate'])->name('certificate');
 });
 
 Route::prefix('admin')->middleware(['auth', 'adminCheck'])->group(function () {
@@ -63,4 +64,3 @@ Route::post('/password', [ProfileController::class,'update_password'])->name('up
 Route::fallback(function () {
     return view('404');
 });
-Route::view('testing', 'template');

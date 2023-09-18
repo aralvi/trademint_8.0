@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use PDF;
 class StatusController extends Controller
 {
     /**
@@ -103,5 +103,16 @@ class StatusController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function generateCertificate()
+    {
+        ini_set('max_execution_time', 1800); //3 minutes
+// $customPaper = array(0,0,500.00,1000.80);
+
+
+        $pdf = PDF::loadView('certificate');
+        // return $pdf->stream('template.pdf');
+        return $pdf->download('trademint-certificate.pdf');
     }
 }
