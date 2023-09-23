@@ -44,7 +44,8 @@ class TransactionController extends Controller
     }
     public function principleWithdraw()
     {
-        return view('money.principle_withdraw');
+        $withdrawl_approval_amount = Transaction::whereUserId(Auth::user()->id)->whereStatus('pending')->pluck('withdraw')->sum();
+        return view('money.principle_withdraw',compact('withdrawl_approval_amount'));
     }
 
     /**

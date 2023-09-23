@@ -29,8 +29,8 @@
                             <div class="row gx-3 mb-3">
                                 <div class="col-md-6">
                                     <label class="small mb-1" for="inputFirstName">Amount</label>
-                                    <input class="form-control" id="inputFirstName" min="{{Auth::user()->total_amount+ Auth::user()->available_withdraw}}" max="{{Auth::user()->total_amount+ Auth::user()->available_withdraw}}" type="number" name="amount"
-                                        placeholder="Enter your withdraw amount" value="{{Auth::user()->total_amount+ Auth::user()->available_withdraw}}" >
+                                    <input class="form-control" id="inputFirstName" min="1" max="{{Auth::user()->total_amount+ Auth::user()->available_withdraw - $withdrawl_approval_amount}}" type="number" name="amount"
+                                        placeholder="Enter your withdraw amount" value="{{Auth::user()->total_amount+ Auth::user()->available_withdraw-$withdrawl_approval_amount}}" >
                                         <input type="hidden" name="request_type" value="withdraw">
                                 </div>
                             </div>
