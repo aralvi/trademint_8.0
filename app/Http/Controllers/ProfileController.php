@@ -48,10 +48,9 @@ class ProfileController extends Controller
             $request->avatar->move(public_path($avatar_destination_folder), $avatar_destination_name);
             $user->avatar = $avatar_destination_folder . $avatar_destination_name;
         }
-        if($request->has('first_name')){
+        if($request->has('name')){
 
-            $user->first_name = $request->first_name;
-            $user->last_name = $request->last_name;
+            $user->name = $request->name;
         $user->email = $request->email;
         $user->mobile = $request->mobile;
         $user->plan = $request->plan;

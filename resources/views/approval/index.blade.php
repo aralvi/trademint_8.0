@@ -39,7 +39,7 @@
                             @foreach ($users as $user)
 
                             <tr>
-                                <td>{{$user->first_name.' '.$user->last_name}}</td>
+                                <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->plan}}</td>
                                 <td>${{$user->total_amount}}</td>
@@ -80,7 +80,7 @@
                             @if ($deposit_request->user->status == 'approved')
 
                             <tr>
-                                <td class="text-capitalize">{{$deposit_request->user->first_name .' '.$deposit_request->user->last_name}}</td>
+                                <td class="text-capitalize">{{$deposit_request->user->name}}</td>
                                 <td>{{$deposit_request->user->email}}</td>
                                 <td>{{$deposit_request->user->plan}}</td>
                                 <td>${{$deposit_request->deposit}}</td>
@@ -122,7 +122,7 @@
                         <tbody>
                            @foreach ($withdraw_requests as $withdraw_request)
                             <tr>
-                                <td class="text-capitalize">{{$withdraw_request->user->first_name .' '.$withdraw_request->user->last_name}}</td>
+                                <td class="text-capitalize">{{$withdraw_request->user->name}}</td>
                             <td>{{$withdraw_request->user->email}}</td>
                             <td>{{$withdraw_request->user->plan}}</td>
                             <td>${{$withdraw_request->withdraw}}</td>

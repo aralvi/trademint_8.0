@@ -67,8 +67,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'binance_email' => ['required', 'string', 'email', 'max:255'],
             'referral_email' => ['required', 'string', 'email', 'exists:users,email'],
@@ -96,8 +95,7 @@ class RegisterController extends Controller
             $referral_user = User::select('id')->whereEmail($data['referral_email'])->first();
         }
         $user = User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
+            'name' => $data['name'],
             'email' => $data['email'],
             'binance_email' => $data['binance_email'],
             'referral_email' => $data['referral_email'],

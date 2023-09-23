@@ -54,18 +54,13 @@
                             <h3><strong> Personal Details</strong></h3>
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (first name)-->
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <label class="small mb-1" for="inputFirstName">First name</label>
-                                    <input class="form-control" id="inputFirstName" type="text" name="first_name"
-                                        placeholder="readonly input" value="{{$user->first_name}}" {{Auth::user()->role == 'admin' ?'':'readonly'}}>
+                                    <input class="form-control" id="inputFirstName" type="text" name="name"
+                                        placeholder="readonly input" value="{{$user->name}}" {{Auth::user()->role == 'admin' ?'':'readonly'}}>
 
                                 </div>
-                                <!-- Form Group (last name)-->
-                                <div class="col-md-6">
-                                    <label class="small mb-1" for="inputLastName">Last name</label>
-                                    <input class="form-control" id="inputLastName" type="text" name="last_name"
-                                        placeholder="Enter your last name" value="{{$user->last_name}}" {{Auth::user()->role == 'admin' ?'':'readonly'}}>
-                                </div>
+
                             </div>
                             <!-- Form Row        -->
                             <!-- Form Group (email address)-->

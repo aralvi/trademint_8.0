@@ -19,7 +19,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="old_password">Old Password*</label>
-                            <input id="old_password" name="old_password" type="password" class="form-control" value="{{ old('old_password') }}" autocomplete="first_name" placeholder="Enter Old Password" />
+                            <input id="old_password" name="old_password" type="password" class="form-control" value="{{ old('old_password') }}" autocomplete="password" placeholder="Enter Old Password" />
                         </div>
                         <div class="form-group">
                             <label for="new_password">New Password*</label>

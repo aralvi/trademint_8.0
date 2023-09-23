@@ -38,7 +38,7 @@
         <table style="width: 100%;margin-top:-32px;">
             <tr>
             <td ><img src="./uploads/left-side-bar.png" alt="" srcset=""></td>
-            <td style="vertical-align: top;text-align:center"><span style="font-size: 50px; display:block;padding-top:15px; text-transform:capitalize;">{{Auth::user()->first_name.' '.Auth::user()->last_name}}</span>
+            <td style="vertical-align: top;text-align:center"><span style="font-size: 50px; display:block;padding-top:15px; text-transform:capitalize;">{{Auth::user()->name}}</span>
                 <img src="./uploads/middle.png" alt="" width="100%" srcset="">
                 <table style="margin: auto">
                     <tr>

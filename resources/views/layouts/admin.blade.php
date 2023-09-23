@@ -66,7 +66,7 @@
                             <a class="collapse-item" href="{{route('profile.edit',Auth::user()->id)}}">Edit Profile</a>
                             <a class="collapse-item" href="{{route('deposit.index')}}">Add Money</a>
                             <a class="collapse-item" href="{{route('withdraw.index')}}">Withdraw Request</a>
-                            <a class="collapse-item" href="{{route('principleWithdraw')}}">Principle Withdraw Request</a>
+                            <a class="collapse-item" href="{{route('principleWithdraw')}}">Principle Withdraw</a>
                             <a class="collapse-item" href="{{route('associates')}}">Associate</a>
                             <a class="collapse-item" href="{{route('certificate')}}">Downlaod Certificate</a>
                         @endif
@@ -120,8 +120,8 @@
                     </button>
 
                     <!-- Topbar Navbar -->
+                    <a href="{{route('runCron')}}" class="btn btn-outline-info">Run Cron</a>
                     <ul class="navbar-nav ml-auto">
-
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <!-- Nav Item - Alerts -->
                         <!-- Nav Item - Messages -->
@@ -132,7 +132,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->first_name.' '.Auth::user()->last_name}}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
                                 <img class="img-profile rounded-circle" src="{{isset(Auth::user()->avatar) ?asset(Auth::user()->avatar):asset('user/img/undraw_profile.svg')}}" alt="head">
                             </a>
                             <!-- Dropdown - User Information -->

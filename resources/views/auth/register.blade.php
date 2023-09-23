@@ -41,13 +41,10 @@
                             <form class="user" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" required value="{{old('first_name')}}" name="first_name" id="exampleInputEmail"
-                                        placeholder="First Name">
+                                    <input type="text" class="form-control form-control-user" required value="{{old('name')}}" name="name" id="exampleInputEmail"
+                                        placeholder=" Name">
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" required value="{{old('last_name')}}" name="last_name" id="exampleInputEmail"
-                                        placeholder="last Name">
-                                </div>
+                                
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" required value="{{old('email')}}" name="email" id="exampleInputEmail1"
                                         placeholder="Email Address">
@@ -118,7 +115,7 @@
 
                             </form>
                             <hr>
-                           
+
                             <div class="text-center"> <a class="small" href="{{route('login')}}">Already have an account?
                                     Login!</a> </div>
                         </div>

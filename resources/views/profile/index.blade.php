@@ -12,7 +12,7 @@
                                 style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem; background: #3158C9;">
                                 <img src="{{ isset($user->avatar) ? asset($user->avatar) : 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp' }}"
                                     alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                                <h5 class="text-capitalize">{{ $user->first_name . ' ' . $user->last_name }}</h5>
+                                <h5 class="text-capitalize">{{ $user->name }}</h5>
                                 @if (Auth::user()->id == $user->id || Auth::user()->role =='admin')
                                 <a class="btn btn-primary" href="{{ route('profile.edit',$user->id) }}" role="button">Edit
                                     Profile</a><br> <br>
