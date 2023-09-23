@@ -30,9 +30,13 @@
         </tr>
 
     </table> --}}
-<style>@page {size: 800px 1100px; margin:0!important; padding:10px!important}</style>
+<style>
+@page {size: 800px 1100px; margin:0!important; padding:10px!important}
 
-    <div class="" style="width: 792px;">
+.page_break { page-break-before: always; }
+</style>
+
+    <div class="" style="width: 792px;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
         <img src="./uploads/header.png" style="margin-left: 3px;" alt="" srcset="">
 
         <table style="width: 100%;margin-top:-32px;">
@@ -63,5 +67,42 @@
         </table>
         <img src="./uploads/bottom.png" style="margin-top: -32px;    margin-left: 3px;" alt="" srcset="">
     </div>
+
+<div class="page_break"></div>
+
+    <table style="width:336px;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; margin:auto; border:1px solid gray;">
+        <tr>
+            <td rowspan="2"><img src="./uploads/small-left-side.png" alt="" srcset=""></td>
+            <td style="font-weight: bold;text-align:right;vertical-align:top">
+                <img src="./uploads/dots.png" alt="" srcset="">
+                <p style="margin: 0px;font-size:25px;">{{Auth::user()->name}}</p>
+                <p style="margin-top: 0px;font-weight:normal;">Associate</p>
+            </td>
+        </tr>
+         <tr>
+            <td style="vertical-align: bottom;"><img src="./uploads/phone.png" alt="" srcset=""> <span> {{Auth::user()->mobile}}</span> <br>
+            <img src="./uploads/email.png" alt="" srcset=""> <span> {{Auth::user()->email}}</span>
+            </td>
+        </tr>
+    </table>
+
+<br><br><br>
+
+    <table style="width: 192px;box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;margin:auto; border:1px solid gray">
+        <tr>
+            <td><img src="./uploads/small-top.png" alt="" srcset=""></td>
+        </tr>
+        <tr><td style="text-align: center;font-weight:bolder;">{{Auth::user()->name}}
+            <p style="text-align: right; font-weight:normal;margin-top:0px;">Associate</p>
+        </td></tr>
+        <tr>
+            <td><img src="./uploads/phone.png" alt="" srcset=""> <span> {{Auth::user()->mobile}}</span></td>
+        </tr>
+        <tr>
+            <td><img src="./uploads/email.png" alt="" srcset=""> <span> {{Auth::user()->email}}</span></td>
+        </tr>
+    </table>
+
+
 </body>
 </html>
