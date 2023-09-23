@@ -16,7 +16,7 @@ class StatusController extends Controller
     public function index()
     {
         $users = User::whereStatus('pending')->get();
-        $withdraw_requests = Transaction::whereRequestType('withdraw')->whereStatus('pending')->get();
+        $withdraw_requests = Transaction::whereIn('request_type',['withdraw','principle'])->whereStatus('pending')->get();
         $deposit_requests = Transaction::whereRequestType('deposit')->whereStatus('pending')->get();
         return view('approval.index', compact('users', 'withdraw_requests', 'deposit_requests'));
     }
@@ -81,18 +81,12 @@ class StatusController extends Controller
         $transaction->save();
         if ($status == 'approved') {
             $user = User::whereId($transaction->user_id)->first();
-            if ($transaction->request_type == 'withdraw') {
-                if ($transaction->withdraw == ($user->total_amount + $user->available_withdraw)) {
-                    $user->total_amount = (int)$user->total_amount + (int)$user->available_withdraw - ((int)$transaction->withdraw);
-                    $user->available_withdraw = (int)$user->total_amount ;
-                }else{
-
-                    $user->available_withdraw = (int) $user->available_withdraw - (int)$transaction->withdraw;
-                }
+            if ($transaction->request_type == 'principle') {
+                $user->total_amount = (int)$user->total_amount  - (int)$transaction->withdraw;
+            } elseif($transaction->request_type == 'withdraw') {
+                $user->available_withdraw = (int) $user->available_withdraw - (int)$transaction->withdraw;
             }else{
-                // $user->total_amount = (int)$user->total_amount + ((int)$transaction->deposit - (int)$transaction->withdraw);
                 $user->total_amount = (int)$user->total_amount + ((int)$transaction->deposit);
-
             }
             $user->save();
         }

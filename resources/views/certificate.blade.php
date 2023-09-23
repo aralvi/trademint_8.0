@@ -80,8 +80,8 @@
             </td>
         </tr>
          <tr>
-            <td style="vertical-align: bottom;"><img src="./uploads/phone.png" alt="" srcset=""> <span> {{Auth::user()->mobile}}</span> <br>
-            <img src="./uploads/email.png" alt="" srcset=""> <span> {{Auth::user()->email}}</span>
+            <td style="vertical-align: bottom;"><img src="./uploads/phone.png" alt="" srcset=""> <span style="font-size: 12px;"> {{Auth::user()->mobile}}</span> <br>
+            <img src="./uploads/email.png" alt="" srcset=""> <span style="font-size: 12px;"> {{Auth::user()->email}}</span>
             </td>
         </tr>
     </table>
@@ -93,13 +93,13 @@
             <td><img src="./uploads/small-top.png" alt="" srcset=""></td>
         </tr>
         <tr><td style="text-align: center;font-weight:bolder;">{{Auth::user()->name}}
-            <p style="text-align: right; font-weight:normal;margin-top:0px;">Associate</p>
+            <p style="font-weight:normal;margin-top:0px;">Associate</p>
         </td></tr>
         <tr>
-            <td><img src="./uploads/phone.png" alt="" srcset=""> <span> {{Auth::user()->mobile}}</span></td>
+            <td><img src="./uploads/phone.png" alt="" srcset=""> <span style="font-size: 12px;"> {{Auth::user()->mobile}}</span></td>
         </tr>
         <tr>
-            <td><img src="./uploads/email.png" alt="" srcset=""> <span> {{Auth::user()->email}}</span></td>
+            <td><img src="./uploads/email.png" alt="" srcset=""> <span style="font-size: 12px;"> {{Auth::user()->email}}</span></td>
         </tr>
     </table>
 

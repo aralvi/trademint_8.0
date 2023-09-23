@@ -14,7 +14,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Total Investment
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{((int)$users->pluck('total_amount')->sum()/100)*10}}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{(int)$users->pluck('total_amount')->sum()}}</div>
                             </div>
                             <div class="col-auto"> <i class="fas fa-dollar-sign fa-2x text-gray-300"></i> </div>
                         </div>
@@ -62,7 +62,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"> Intrest Distribution
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{$interest_distribution}}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{((int)$users->pluck('total_amount')->sum()/100)*10}}</div>
                             </div>
                             <div class="col-auto"> <i class="fas fa-dollar-sign fa-2x text-gray-300"></i> </div>
                         </div>
@@ -102,7 +102,12 @@
                             @endforeach
 
                         </tbody>
-
+                        <tfoot>
+                            <tr>
+                                <th colspan="3" class="text-center">Total Amount</th>
+                                <th colspan="3">{{$users->pluck('total_amount')->sum()}}</th>
+                            </tr>
+                        </tfoot>
                     </table>
 
                     <!-- DataTales end -->
@@ -171,7 +176,11 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1"> Monthly Earning
-                                    {{ $setting[Auth::user()->plan . '_plan_interest'] }}% + {{$setting['referral_interest']}}%</div>
+                                    {{ $setting[Auth::user()->plan . '_plan_interest'] }}%
+                                    @if (Auth::user()->plan == 'standard')
+                                    + {{$setting['referral_interest']}}%
+                                    @endif
+                                </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
                                     ${{ (($setting[Auth::user()->plan . '_plan_interest'] / 100) *((int) Auth::user()->transactions->pluck('deposit')->sum() -(int) Auth::user()->transactions->pluck('withdraw')->sum())) +(int)(Auth::user()->plan == 'standard' && (int)Auth::user()->total_amount >=1200? ($setting['referral_interest'] / 100) * ((int) $team_investment):0)}}
                                 </div>

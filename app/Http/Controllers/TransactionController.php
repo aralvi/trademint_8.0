@@ -64,7 +64,7 @@ class TransactionController extends Controller
         $request->validate([
             'proof' => ['required_if:request_type,deposit', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
             'amount' => ['required', 'numeric'],
-            'request_type' => ['required', 'in:deposit,withdraw']
+            'request_type' => ['required', 'in:deposit,withdraw,principle']
         ]);
         $transaction = new Transaction();
         if ($request->request_type == 'deposit') {
