@@ -68,7 +68,7 @@
                             <a class="collapse-item" href="{{route('withdraw.index')}}">Withdraw Request</a>
                             <a class="collapse-item" href="{{route('principleWithdraw')}}">Principle Withdraw</a>
                             <a class="collapse-item" href="{{route('associates')}}">Associate</a>
-                            @if (Auth::user()->total_amount <=1200)
+                            @if (Auth::user()->total_amount >=1200)
                             <a class="collapse-item" href="{{route('certificate')}}">Downlaod Certificate</a>
                             @endif
                         @endif
