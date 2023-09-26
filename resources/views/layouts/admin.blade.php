@@ -122,7 +122,6 @@
                     </button>
 
                     <!-- Topbar Navbar -->
-                    <a href="{{route('runCron')}}" class="btn btn-outline-info">Run Cron</a>
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <!-- Nav Item - Alerts -->

@@ -115,35 +115,4 @@ class StatusController extends Controller
 
 
 
-    function runCron() {
-        $settings = Settings::first();
-        $users = User::where('role', 'user')->get();
-        foreach ($users as $key => $user) {
-            $plan_interest = $user->plan . '_plan_interest';
-            $referal_users = User::where('referral_id', $user->id)->wherePlan('standard')->pluck('id')->toArray();
-            $referral_investment = $user->plan == 'standard' && $user->total_amount >= 1200 ? (int)Transaction::whereIn('user_id', $referal_users)->pluck('deposit')->sum() - (int)Transaction::whereIn('user_id', $referal_users)->pluck('withdraw')->sum() : 0;
-            $monthly_commission = new MonthlyCommission();
-            $monthly_commission->user_id = $user->id;
-            $monthly_commission->investment = $user->total_amount;
-            $monthly_commission->plan = $user->plan;
-            $monthly_commission->interest_percent = $settings->$plan_interest;
-            $monthly_commission->referral_investment = $referral_investment;
-            $monthly_commission->referral_interest_percent = $settings->referral_interest;
-            $monthly_commission->total_amount = (int)$user->total_amount + (int) $user->available_withdraw + (int)(((int)$settings->$plan_interest / 100) * (int)$user->total_amount) + (int)(((int)$settings->referral_interest / 100) * (int)$referral_investment);
-            $monthly_commission->total_interest = (int)(((int)$settings->$plan_interest / 100) * ((int)$user->total_amount + (int) $user->available_withdraw)) + (int)(((int)$settings->referral_interest / 100) * (int)$referral_investment);
-            $monthly_commission->save();
-            // $user->total_amount = (int) $user->total_amount + (int) $monthly_commission->total_interest;
-            $user->total_amount = (int) $user->total_amount + (int) $user->available_withdraw;
-            $user->available_withdraw = (int) $monthly_commission->total_interest;
-            $user->save();
-            $transaction = new Transaction();
-            $transaction->request_type = 'interest';
-            $transaction->status = 'approved';
-            $transaction->deposit = $monthly_commission->total_interest;
-            $transaction->user_id = $user->id;
-            $transaction->referring_id = $user->referral_id;
-            $transaction->save();
-        }
-        return back();
-    }
 }

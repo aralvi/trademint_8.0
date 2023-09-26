@@ -49,7 +49,6 @@ Route::middleware('auth')->group(function () {
     Route::get('associates', [ReferralsController::class, 'index'])->name('associates');
     Route::get('user/{id}', [StatusController::class, 'showUser'])->name('team');
     Route::get('certificate', [StatusController::class, 'generateCertificate'])->name('certificate');
-    Route::get('runCron', [StatusController::class, 'runCron'])->name('runCron');
 });
 
 Route::prefix('admin')->middleware(['auth', 'adminCheck'])->group(function () {
