@@ -15,7 +15,7 @@
                     <p><img src="{{asset('user/img/qr.jpg')}}" alt="" width="300" /></p>
                     <p><strong>Instruction</strong><br>
                     </p>
-                    <p> Deposit Money First on Binance then, submit form with payment proof.&nbsp;&nbsp;
+                    <p> Deposit Money First on Binance then, upload payment proof.&nbsp;&nbsp;
                     </p>
                     <p> your amount will be reflecting in 24hrs in your Trademint account. </p>
                 </div>

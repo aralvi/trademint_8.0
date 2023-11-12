@@ -14,7 +14,7 @@
                         Instruction
                     </div>
                     <div class="card-body">
-                        Amount will be transfer in your bank account in 3 Working Days.
+                        Amount will be transfer in your Binance account in 2 Working Days.
                     </div>
                 </div>
 

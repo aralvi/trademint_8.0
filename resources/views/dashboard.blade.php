@@ -267,6 +267,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th class="d-none">ID</th>
                                 <th>Date</th>
                                 <th>Debit </th>
                                 <th>Credit</th>
@@ -286,6 +287,7 @@
                                 $total_amount = $total_deposit-$total_withdraw;
                             @endphp
                                 <tr>
+                                    <td class="d-none">{{$transaction->id}}</td>
                                     <td>{{ $transaction->created_at->format('d M Y') }}</td>
                                     <td>${{ $transaction->withdraw }}</td>
                                     <td>${{ $transaction->deposit }}</td>
