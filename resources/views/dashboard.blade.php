@@ -81,6 +81,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th class="d-none">ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Plan</th>
@@ -92,6 +93,7 @@
                         <tbody>
                             @foreach ($users as $user)
                             <tr>
+                                <td class="d-none">{{$user->id}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->plan}}</td>
