@@ -126,7 +126,7 @@
                             <td>{{$withdraw_request->user->email}}</td>
                             <td>{{$withdraw_request->user->plan}}</td>
                             <td>${{$withdraw_request->withdraw}}</td>
-                            <td>{{$withdraw_request->created_at->format('Y-mm-d')}}</td>
+                            <td>{{$withdraw_request->created_at->format('Y-m-d')}}</td>
                             <td><a href="{{ route('update.transaction.status',['id'=>$withdraw_request->id,'status'=>'approved']) }}" class="badge badge-success">Approve</a>
                                 <a href="{{ route('update.transaction.status',['id'=>$withdraw_request->id,'status'=>'deleted']) }}" class="badge badge-danger">Delete</a>
                             </td>
